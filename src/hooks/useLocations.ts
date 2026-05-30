@@ -1,6 +1,6 @@
-import { KrangApi } from '@/lib/krangApi';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import type { CreateLocation, UpdateLocation } from '@57em-regiment/krang-api-contract';
+import type { CreateLocation, UpdateLocation } from '@57eme-regiment/krang-api-contract';
+import { KrangApi } from '@/lib/api-client';
 
 export const LOCATIONS_QUERY_KEY = ['locations'] as const;
 

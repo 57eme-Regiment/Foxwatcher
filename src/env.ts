@@ -6,10 +6,13 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(['development', 'test', 'production'])
       .default('development'),
-    KrangBaseApi: z.url(),
+    KRANG_SERVICE_URL: z.url(),
   },
   clientPrefix: 'VITE_',
-  client: {},
+  client: {
+    VITE_RENENUTET_SERVICE_URL: z.url(),
+    VITE_KRANG_SERVICE_URL: z.url(),
+  },
   runtimeEnv: import.meta.env || process.env,
   emptyStringAsUndefined: true,
 });

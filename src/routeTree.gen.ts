@@ -8,126 +8,181 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from '@tanstack/react-router'
-
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UnauthenticatedRouteImport } from './routes/unauthenticated'
+import { Route as TownsRouteImport } from './routes/towns'
+import { Route as RegionsRouteImport } from './routes/regions'
+import { Route as LocationsRouteImport } from './routes/locations'
+import { Route as ItemsRouteImport } from './routes/items'
+import { Route as ForbiddenRouteImport } from './routes/forbidden'
+import { Route as IndexRouteImport } from './routes/index'
 
-const TownsLazyRouteImport = createFileRoute('/towns')()
-const RegionsLazyRouteImport = createFileRoute('/regions')()
-const LocationsLazyRouteImport = createFileRoute('/locations')()
-const ItemsLazyRouteImport = createFileRoute('/items')()
-const IndexLazyRouteImport = createFileRoute('/')()
-
-const TownsLazyRoute = TownsLazyRouteImport.update({
+const UnauthenticatedRoute = UnauthenticatedRouteImport.update({
+  id: '/unauthenticated',
+  path: '/unauthenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TownsRoute = TownsRouteImport.update({
   id: '/towns',
   path: '/towns',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/towns.lazy').then((d) => d.Route))
-const RegionsLazyRoute = RegionsLazyRouteImport.update({
+const RegionsRoute = RegionsRouteImport.update({
   id: '/regions',
   path: '/regions',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/regions.lazy').then((d) => d.Route))
-const LocationsLazyRoute = LocationsLazyRouteImport.update({
+const LocationsRoute = LocationsRouteImport.update({
   id: '/locations',
   path: '/locations',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/locations.lazy').then((d) => d.Route))
-const ItemsLazyRoute = ItemsLazyRouteImport.update({
+const ItemsRoute = ItemsRouteImport.update({
   id: '/items',
   path: '/items',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/items.lazy').then((d) => d.Route))
-const IndexLazyRoute = IndexLazyRouteImport.update({
+const ForbiddenRoute = ForbiddenRouteImport.update({
+  id: '/forbidden',
+  path: '/forbidden',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexLazyRoute
-  '/items': typeof ItemsLazyRoute
-  '/locations': typeof LocationsLazyRoute
-  '/regions': typeof RegionsLazyRoute
-  '/towns': typeof TownsLazyRoute
+  '/': typeof IndexRoute
+  '/forbidden': typeof ForbiddenRoute
+  '/items': typeof ItemsRoute
+  '/locations': typeof LocationsRoute
+  '/regions': typeof RegionsRoute
+  '/towns': typeof TownsRoute
+  '/unauthenticated': typeof UnauthenticatedRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexLazyRoute
-  '/items': typeof ItemsLazyRoute
-  '/locations': typeof LocationsLazyRoute
-  '/regions': typeof RegionsLazyRoute
-  '/towns': typeof TownsLazyRoute
+  '/': typeof IndexRoute
+  '/forbidden': typeof ForbiddenRoute
+  '/items': typeof ItemsRoute
+  '/locations': typeof LocationsRoute
+  '/regions': typeof RegionsRoute
+  '/towns': typeof TownsRoute
+  '/unauthenticated': typeof UnauthenticatedRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexLazyRoute
-  '/items': typeof ItemsLazyRoute
-  '/locations': typeof LocationsLazyRoute
-  '/regions': typeof RegionsLazyRoute
-  '/towns': typeof TownsLazyRoute
+  '/': typeof IndexRoute
+  '/forbidden': typeof ForbiddenRoute
+  '/items': typeof ItemsRoute
+  '/locations': typeof LocationsRoute
+  '/regions': typeof RegionsRoute
+  '/towns': typeof TownsRoute
+  '/unauthenticated': typeof UnauthenticatedRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/items' | '/locations' | '/regions' | '/towns'
+  fullPaths:
+    | '/'
+    | '/forbidden'
+    | '/items'
+    | '/locations'
+    | '/regions'
+    | '/towns'
+    | '/unauthenticated'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/items' | '/locations' | '/regions' | '/towns'
-  id: '__root__' | '/' | '/items' | '/locations' | '/regions' | '/towns'
+  to:
+    | '/'
+    | '/forbidden'
+    | '/items'
+    | '/locations'
+    | '/regions'
+    | '/towns'
+    | '/unauthenticated'
+  id:
+    | '__root__'
+    | '/'
+    | '/forbidden'
+    | '/items'
+    | '/locations'
+    | '/regions'
+    | '/towns'
+    | '/unauthenticated'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexLazyRoute: typeof IndexLazyRoute
-  ItemsLazyRoute: typeof ItemsLazyRoute
-  LocationsLazyRoute: typeof LocationsLazyRoute
-  RegionsLazyRoute: typeof RegionsLazyRoute
-  TownsLazyRoute: typeof TownsLazyRoute
+  IndexRoute: typeof IndexRoute
+  ForbiddenRoute: typeof ForbiddenRoute
+  ItemsRoute: typeof ItemsRoute
+  LocationsRoute: typeof LocationsRoute
+  RegionsRoute: typeof RegionsRoute
+  TownsRoute: typeof TownsRoute
+  UnauthenticatedRoute: typeof UnauthenticatedRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/unauthenticated': {
+      id: '/unauthenticated'
+      path: '/unauthenticated'
+      fullPath: '/unauthenticated'
+      preLoaderRoute: typeof UnauthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/towns': {
       id: '/towns'
       path: '/towns'
       fullPath: '/towns'
-      preLoaderRoute: typeof TownsLazyRouteImport
+      preLoaderRoute: typeof TownsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/regions': {
       id: '/regions'
       path: '/regions'
       fullPath: '/regions'
-      preLoaderRoute: typeof RegionsLazyRouteImport
+      preLoaderRoute: typeof RegionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/locations': {
       id: '/locations'
       path: '/locations'
       fullPath: '/locations'
-      preLoaderRoute: typeof LocationsLazyRouteImport
+      preLoaderRoute: typeof LocationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/items': {
       id: '/items'
       path: '/items'
       fullPath: '/items'
-      preLoaderRoute: typeof ItemsLazyRouteImport
+      preLoaderRoute: typeof ItemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forbidden': {
+      id: '/forbidden'
+      path: '/forbidden'
+      fullPath: '/forbidden'
+      preLoaderRoute: typeof ForbiddenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexLazyRouteImport
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexLazyRoute: IndexLazyRoute,
-  ItemsLazyRoute: ItemsLazyRoute,
-  LocationsLazyRoute: LocationsLazyRoute,
-  RegionsLazyRoute: RegionsLazyRoute,
-  TownsLazyRoute: TownsLazyRoute,
+  IndexRoute: IndexRoute,
+  ForbiddenRoute: ForbiddenRoute,
+  ItemsRoute: ItemsRoute,
+  LocationsRoute: LocationsRoute,
+  RegionsRoute: RegionsRoute,
+  TownsRoute: TownsRoute,
+  UnauthenticatedRoute: UnauthenticatedRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

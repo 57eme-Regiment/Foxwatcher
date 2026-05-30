@@ -1,6 +1,6 @@
-import type { CreateRegion, UpdateRegion } from '@57em-regiment/krang-api-contract';
+import { KrangApi } from '@/lib/api-client';
+import type { CreateRegion, UpdateRegion } from '@57eme-regiment/krang-api-contract';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { KrangApi } from '@/lib/krangApi';
 
 export const REGIONS_QUERY_KEY = ['regions'] as const;
 

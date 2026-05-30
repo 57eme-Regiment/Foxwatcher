@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router';
+import { AuthButton } from '../auth/authButton';
 
 export function Header() {
   return (
@@ -7,6 +8,9 @@ export function Header() {
         <Link to="/" className="font-bold text-lg tracking-tight">
           FoxWatcher
         </Link>
+        <div className="flex items-center gap-4">
+          <AuthButton />
+        </div>
       </div>
     </header>
   );

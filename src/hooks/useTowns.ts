@@ -1,6 +1,9 @@
-import { KrangApi } from '@/lib/krangApi';
+import { KrangApi } from '@/lib/api-client';
+import type {
+  CreateTown,
+  UpdateTown,
+} from '@57eme-regiment/krang-api-contract';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import type { CreateTown, UpdateTown } from '@57em-regiment/krang-api-contract';
 
 export const TOWNS_QUERY_KEY = ['towns'] as const;
 
