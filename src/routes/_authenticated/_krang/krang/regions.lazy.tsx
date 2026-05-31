@@ -7,7 +7,7 @@ import { IconPlus } from '@tabler/icons-react';
 import { createLazyFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 
-export const Route = createLazyFileRoute('/regions')({
+export const Route = createLazyFileRoute('/_authenticated/_krang/krang/regions')({
   component: Regions,
 });
 

@@ -1,2 +1,5 @@
 allowBuilds:
   msw: true
+
+overrides:
+  '@ts-rest/core': '3.53.0-rc.1'

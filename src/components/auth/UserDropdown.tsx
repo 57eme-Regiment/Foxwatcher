@@ -8,7 +8,14 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { authClient } from '@/lib/auth';
-import { IconHome, IconLoader2, IconLogout } from '@tabler/icons-react';
+import {
+  IconBulb,
+  IconForklift,
+  IconHome,
+  IconLoader2,
+  IconLogout,
+  IconShieldLock,
+} from '@tabler/icons-react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
 
@@ -42,7 +49,30 @@ export function UserDropdown() {
             onClick={() => navigate({ to: '/' })}
             className="hover:cursor-pointer">
             <IconHome className="mr-2 size-4" />
-            Tableau de bord
+            Dashboard
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+
+        <DropdownMenuSeparator />
+
+        <DropdownMenuGroup>
+          <DropdownMenuItem
+            onClick={() => navigate({ to: '/wanshitong' })}
+            className="hover:cursor-pointer">
+            <IconShieldLock className="mr-2 size-4" />
+            WanShiTong
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => navigate({ to: '/krang' })}
+            className="hover:cursor-pointer">
+            <IconBulb className="mr-2 size-4" />
+            Krang
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => navigate({ to: '/renenutet' })}
+            className="hover:cursor-pointer">
+            <IconForklift className="mr-2 size-4" />
+            Renenutet
           </DropdownMenuItem>
         </DropdownMenuGroup>
 

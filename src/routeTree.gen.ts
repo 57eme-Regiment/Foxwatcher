@@ -8,116 +8,273 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnauthenticatedRouteImport } from './routes/unauthenticated'
-import { Route as TownsRouteImport } from './routes/towns'
-import { Route as RegionsRouteImport } from './routes/regions'
-import { Route as LocationsRouteImport } from './routes/locations'
-import { Route as ItemsRouteImport } from './routes/items'
 import { Route as ForbiddenRouteImport } from './routes/forbidden'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
+import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedWanshitongRouteImport } from './routes/_authenticated/_wanshitong'
+import { Route as AuthenticatedRenenutetRouteImport } from './routes/_authenticated/_renenutet'
+import { Route as AuthenticatedKrangRouteImport } from './routes/_authenticated/_krang'
+import { Route as AuthenticatedKrangKrangTownsRouteImport } from './routes/_authenticated/_krang/krang/towns'
+import { Route as AuthenticatedKrangKrangRegionsRouteImport } from './routes/_authenticated/_krang/krang/regions'
+import { Route as AuthenticatedKrangKrangLocationsRouteImport } from './routes/_authenticated/_krang/krang/locations'
+import { Route as AuthenticatedKrangKrangItemsRouteImport } from './routes/_authenticated/_krang/krang/items'
+import { Route as AuthenticatedWanshitongWanshitongUsersIndexRouteImport } from './routes/_authenticated/_wanshitong/wanshitong/users/index'
+import { Route as AuthenticatedWanshitongWanshitongRolesIndexRouteImport } from './routes/_authenticated/_wanshitong/wanshitong/roles/index'
+import { Route as AuthenticatedWanshitongWanshitongUsersOverridesIndexRouteImport } from './routes/_authenticated/_wanshitong/wanshitong/users/overrides/index'
+
+const AuthenticatedWanshitongWanshitongIndexLazyRouteImport = createFileRoute(
+  '/_authenticated/_wanshitong/wanshitong/',
+)()
+const AuthenticatedRenenutetRenenutetIndexLazyRouteImport = createFileRoute(
+  '/_authenticated/_renenutet/renenutet/',
+)()
+const AuthenticatedKrangKrangIndexLazyRouteImport = createFileRoute(
+  '/_authenticated/_krang/krang/',
+)()
 
 const UnauthenticatedRoute = UnauthenticatedRouteImport.update({
   id: '/unauthenticated',
   path: '/unauthenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TownsRoute = TownsRouteImport.update({
-  id: '/towns',
-  path: '/towns',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/towns.lazy').then((d) => d.Route))
-const RegionsRoute = RegionsRouteImport.update({
-  id: '/regions',
-  path: '/regions',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/regions.lazy').then((d) => d.Route))
-const LocationsRoute = LocationsRouteImport.update({
-  id: '/locations',
-  path: '/locations',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/locations.lazy').then((d) => d.Route))
-const ItemsRoute = ItemsRouteImport.update({
-  id: '/items',
-  path: '/items',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/items.lazy').then((d) => d.Route))
 const ForbiddenRoute = ForbiddenRouteImport.update({
   id: '/forbidden',
   path: '/forbidden',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+  getParentRoute: () => AuthenticatedRoute,
+} as any).lazy(() =>
+  import('./routes/_authenticated/index.lazy').then((d) => d.Route),
+)
+const AuthenticatedWanshitongRoute = AuthenticatedWanshitongRouteImport.update({
+  id: '/_wanshitong',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedRenenutetRoute = AuthenticatedRenenutetRouteImport.update({
+  id: '/_renenutet',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedKrangRoute = AuthenticatedKrangRouteImport.update({
+  id: '/_krang',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedWanshitongWanshitongIndexLazyRoute =
+  AuthenticatedWanshitongWanshitongIndexLazyRouteImport.update({
+    id: '/wanshitong/',
+    path: '/wanshitong/',
+    getParentRoute: () => AuthenticatedWanshitongRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/_wanshitong/wanshitong/index.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+const AuthenticatedRenenutetRenenutetIndexLazyRoute =
+  AuthenticatedRenenutetRenenutetIndexLazyRouteImport.update({
+    id: '/renenutet/',
+    path: '/renenutet/',
+    getParentRoute: () => AuthenticatedRenenutetRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/_renenutet/renenutet/index.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+const AuthenticatedKrangKrangIndexLazyRoute =
+  AuthenticatedKrangKrangIndexLazyRouteImport.update({
+    id: '/krang/',
+    path: '/krang/',
+    getParentRoute: () => AuthenticatedKrangRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/_krang/krang/index.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+const AuthenticatedKrangKrangTownsRoute =
+  AuthenticatedKrangKrangTownsRouteImport.update({
+    id: '/krang/towns',
+    path: '/krang/towns',
+    getParentRoute: () => AuthenticatedKrangRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/_krang/krang/towns.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+const AuthenticatedKrangKrangRegionsRoute =
+  AuthenticatedKrangKrangRegionsRouteImport.update({
+    id: '/krang/regions',
+    path: '/krang/regions',
+    getParentRoute: () => AuthenticatedKrangRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/_krang/krang/regions.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+const AuthenticatedKrangKrangLocationsRoute =
+  AuthenticatedKrangKrangLocationsRouteImport.update({
+    id: '/krang/locations',
+    path: '/krang/locations',
+    getParentRoute: () => AuthenticatedKrangRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/_krang/krang/locations.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+const AuthenticatedKrangKrangItemsRoute =
+  AuthenticatedKrangKrangItemsRouteImport.update({
+    id: '/krang/items',
+    path: '/krang/items',
+    getParentRoute: () => AuthenticatedKrangRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/_krang/krang/items.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+const AuthenticatedWanshitongWanshitongUsersIndexRoute =
+  AuthenticatedWanshitongWanshitongUsersIndexRouteImport.update({
+    id: '/wanshitong/users/',
+    path: '/wanshitong/users/',
+    getParentRoute: () => AuthenticatedWanshitongRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/_wanshitong/wanshitong/users/index.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+const AuthenticatedWanshitongWanshitongRolesIndexRoute =
+  AuthenticatedWanshitongWanshitongRolesIndexRouteImport.update({
+    id: '/wanshitong/roles/',
+    path: '/wanshitong/roles/',
+    getParentRoute: () => AuthenticatedWanshitongRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/_wanshitong/wanshitong/roles/index.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+const AuthenticatedWanshitongWanshitongUsersOverridesIndexRoute =
+  AuthenticatedWanshitongWanshitongUsersOverridesIndexRouteImport.update({
+    id: '/wanshitong/users/overrides/',
+    path: '/wanshitong/users/overrides/',
+    getParentRoute: () => AuthenticatedWanshitongRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/_wanshitong/wanshitong/users/overrides/index.lazy').then(
+      (d) => d.Route,
+    ),
+  )
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof AuthenticatedIndexRoute
   '/forbidden': typeof ForbiddenRoute
-  '/items': typeof ItemsRoute
-  '/locations': typeof LocationsRoute
-  '/regions': typeof RegionsRoute
-  '/towns': typeof TownsRoute
   '/unauthenticated': typeof UnauthenticatedRoute
+  '/krang/items': typeof AuthenticatedKrangKrangItemsRoute
+  '/krang/locations': typeof AuthenticatedKrangKrangLocationsRoute
+  '/krang/regions': typeof AuthenticatedKrangKrangRegionsRoute
+  '/krang/towns': typeof AuthenticatedKrangKrangTownsRoute
+  '/krang/': typeof AuthenticatedKrangKrangIndexLazyRoute
+  '/renenutet/': typeof AuthenticatedRenenutetRenenutetIndexLazyRoute
+  '/wanshitong/': typeof AuthenticatedWanshitongWanshitongIndexLazyRoute
+  '/wanshitong/roles/': typeof AuthenticatedWanshitongWanshitongRolesIndexRoute
+  '/wanshitong/users/': typeof AuthenticatedWanshitongWanshitongUsersIndexRoute
+  '/wanshitong/users/overrides/': typeof AuthenticatedWanshitongWanshitongUsersOverridesIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/forbidden': typeof ForbiddenRoute
-  '/items': typeof ItemsRoute
-  '/locations': typeof LocationsRoute
-  '/regions': typeof RegionsRoute
-  '/towns': typeof TownsRoute
   '/unauthenticated': typeof UnauthenticatedRoute
+  '/': typeof AuthenticatedIndexRoute
+  '/krang/items': typeof AuthenticatedKrangKrangItemsRoute
+  '/krang/locations': typeof AuthenticatedKrangKrangLocationsRoute
+  '/krang/regions': typeof AuthenticatedKrangKrangRegionsRoute
+  '/krang/towns': typeof AuthenticatedKrangKrangTownsRoute
+  '/krang': typeof AuthenticatedKrangKrangIndexLazyRoute
+  '/renenutet': typeof AuthenticatedRenenutetRenenutetIndexLazyRoute
+  '/wanshitong': typeof AuthenticatedWanshitongWanshitongIndexLazyRoute
+  '/wanshitong/roles': typeof AuthenticatedWanshitongWanshitongRolesIndexRoute
+  '/wanshitong/users': typeof AuthenticatedWanshitongWanshitongUsersIndexRoute
+  '/wanshitong/users/overrides': typeof AuthenticatedWanshitongWanshitongUsersOverridesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/forbidden': typeof ForbiddenRoute
-  '/items': typeof ItemsRoute
-  '/locations': typeof LocationsRoute
-  '/regions': typeof RegionsRoute
-  '/towns': typeof TownsRoute
   '/unauthenticated': typeof UnauthenticatedRoute
+  '/_authenticated/_krang': typeof AuthenticatedKrangRouteWithChildren
+  '/_authenticated/_renenutet': typeof AuthenticatedRenenutetRouteWithChildren
+  '/_authenticated/_wanshitong': typeof AuthenticatedWanshitongRouteWithChildren
+  '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/_krang/krang/items': typeof AuthenticatedKrangKrangItemsRoute
+  '/_authenticated/_krang/krang/locations': typeof AuthenticatedKrangKrangLocationsRoute
+  '/_authenticated/_krang/krang/regions': typeof AuthenticatedKrangKrangRegionsRoute
+  '/_authenticated/_krang/krang/towns': typeof AuthenticatedKrangKrangTownsRoute
+  '/_authenticated/_krang/krang/': typeof AuthenticatedKrangKrangIndexLazyRoute
+  '/_authenticated/_renenutet/renenutet/': typeof AuthenticatedRenenutetRenenutetIndexLazyRoute
+  '/_authenticated/_wanshitong/wanshitong/': typeof AuthenticatedWanshitongWanshitongIndexLazyRoute
+  '/_authenticated/_wanshitong/wanshitong/roles/': typeof AuthenticatedWanshitongWanshitongRolesIndexRoute
+  '/_authenticated/_wanshitong/wanshitong/users/': typeof AuthenticatedWanshitongWanshitongUsersIndexRoute
+  '/_authenticated/_wanshitong/wanshitong/users/overrides/': typeof AuthenticatedWanshitongWanshitongUsersOverridesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/forbidden'
-    | '/items'
-    | '/locations'
-    | '/regions'
-    | '/towns'
     | '/unauthenticated'
+    | '/krang/items'
+    | '/krang/locations'
+    | '/krang/regions'
+    | '/krang/towns'
+    | '/krang/'
+    | '/renenutet/'
+    | '/wanshitong/'
+    | '/wanshitong/roles/'
+    | '/wanshitong/users/'
+    | '/wanshitong/users/overrides/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/forbidden'
-    | '/items'
-    | '/locations'
-    | '/regions'
-    | '/towns'
     | '/unauthenticated'
+    | '/'
+    | '/krang/items'
+    | '/krang/locations'
+    | '/krang/regions'
+    | '/krang/towns'
+    | '/krang'
+    | '/renenutet'
+    | '/wanshitong'
+    | '/wanshitong/roles'
+    | '/wanshitong/users'
+    | '/wanshitong/users/overrides'
   id:
     | '__root__'
-    | '/'
+    | '/_authenticated'
     | '/forbidden'
-    | '/items'
-    | '/locations'
-    | '/regions'
-    | '/towns'
     | '/unauthenticated'
+    | '/_authenticated/_krang'
+    | '/_authenticated/_renenutet'
+    | '/_authenticated/_wanshitong'
+    | '/_authenticated/'
+    | '/_authenticated/_krang/krang/items'
+    | '/_authenticated/_krang/krang/locations'
+    | '/_authenticated/_krang/krang/regions'
+    | '/_authenticated/_krang/krang/towns'
+    | '/_authenticated/_krang/krang/'
+    | '/_authenticated/_renenutet/renenutet/'
+    | '/_authenticated/_wanshitong/wanshitong/'
+    | '/_authenticated/_wanshitong/wanshitong/roles/'
+    | '/_authenticated/_wanshitong/wanshitong/users/'
+    | '/_authenticated/_wanshitong/wanshitong/users/overrides/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
   ForbiddenRoute: typeof ForbiddenRoute
-  ItemsRoute: typeof ItemsRoute
-  LocationsRoute: typeof LocationsRoute
-  RegionsRoute: typeof RegionsRoute
-  TownsRoute: typeof TownsRoute
   UnauthenticatedRoute: typeof UnauthenticatedRoute
 }
 
@@ -130,34 +287,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UnauthenticatedRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/towns': {
-      id: '/towns'
-      path: '/towns'
-      fullPath: '/towns'
-      preLoaderRoute: typeof TownsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/regions': {
-      id: '/regions'
-      path: '/regions'
-      fullPath: '/regions'
-      preLoaderRoute: typeof RegionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/locations': {
-      id: '/locations'
-      path: '/locations'
-      fullPath: '/locations'
-      preLoaderRoute: typeof LocationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/items': {
-      id: '/items'
-      path: '/items'
-      fullPath: '/items'
-      preLoaderRoute: typeof ItemsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/forbidden': {
       id: '/forbidden'
       path: '/forbidden'
@@ -165,23 +294,193 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForbiddenRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/': {
+      id: '/_authenticated/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/_wanshitong': {
+      id: '/_authenticated/_wanshitong'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedWanshitongRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/_renenutet': {
+      id: '/_authenticated/_renenutet'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRenenutetRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/_krang': {
+      id: '/_authenticated/_krang'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedKrangRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/_wanshitong/wanshitong/': {
+      id: '/_authenticated/_wanshitong/wanshitong/'
+      path: '/wanshitong'
+      fullPath: '/wanshitong/'
+      preLoaderRoute: typeof AuthenticatedWanshitongWanshitongIndexLazyRouteImport
+      parentRoute: typeof AuthenticatedWanshitongRoute
+    }
+    '/_authenticated/_renenutet/renenutet/': {
+      id: '/_authenticated/_renenutet/renenutet/'
+      path: '/renenutet'
+      fullPath: '/renenutet/'
+      preLoaderRoute: typeof AuthenticatedRenenutetRenenutetIndexLazyRouteImport
+      parentRoute: typeof AuthenticatedRenenutetRoute
+    }
+    '/_authenticated/_krang/krang/': {
+      id: '/_authenticated/_krang/krang/'
+      path: '/krang'
+      fullPath: '/krang/'
+      preLoaderRoute: typeof AuthenticatedKrangKrangIndexLazyRouteImport
+      parentRoute: typeof AuthenticatedKrangRoute
+    }
+    '/_authenticated/_krang/krang/towns': {
+      id: '/_authenticated/_krang/krang/towns'
+      path: '/krang/towns'
+      fullPath: '/krang/towns'
+      preLoaderRoute: typeof AuthenticatedKrangKrangTownsRouteImport
+      parentRoute: typeof AuthenticatedKrangRoute
+    }
+    '/_authenticated/_krang/krang/regions': {
+      id: '/_authenticated/_krang/krang/regions'
+      path: '/krang/regions'
+      fullPath: '/krang/regions'
+      preLoaderRoute: typeof AuthenticatedKrangKrangRegionsRouteImport
+      parentRoute: typeof AuthenticatedKrangRoute
+    }
+    '/_authenticated/_krang/krang/locations': {
+      id: '/_authenticated/_krang/krang/locations'
+      path: '/krang/locations'
+      fullPath: '/krang/locations'
+      preLoaderRoute: typeof AuthenticatedKrangKrangLocationsRouteImport
+      parentRoute: typeof AuthenticatedKrangRoute
+    }
+    '/_authenticated/_krang/krang/items': {
+      id: '/_authenticated/_krang/krang/items'
+      path: '/krang/items'
+      fullPath: '/krang/items'
+      preLoaderRoute: typeof AuthenticatedKrangKrangItemsRouteImport
+      parentRoute: typeof AuthenticatedKrangRoute
+    }
+    '/_authenticated/_wanshitong/wanshitong/users/': {
+      id: '/_authenticated/_wanshitong/wanshitong/users/'
+      path: '/wanshitong/users'
+      fullPath: '/wanshitong/users/'
+      preLoaderRoute: typeof AuthenticatedWanshitongWanshitongUsersIndexRouteImport
+      parentRoute: typeof AuthenticatedWanshitongRoute
+    }
+    '/_authenticated/_wanshitong/wanshitong/roles/': {
+      id: '/_authenticated/_wanshitong/wanshitong/roles/'
+      path: '/wanshitong/roles'
+      fullPath: '/wanshitong/roles/'
+      preLoaderRoute: typeof AuthenticatedWanshitongWanshitongRolesIndexRouteImport
+      parentRoute: typeof AuthenticatedWanshitongRoute
+    }
+    '/_authenticated/_wanshitong/wanshitong/users/overrides/': {
+      id: '/_authenticated/_wanshitong/wanshitong/users/overrides/'
+      path: '/wanshitong/users/overrides'
+      fullPath: '/wanshitong/users/overrides/'
+      preLoaderRoute: typeof AuthenticatedWanshitongWanshitongUsersOverridesIndexRouteImport
+      parentRoute: typeof AuthenticatedWanshitongRoute
     }
   }
 }
 
+interface AuthenticatedKrangRouteChildren {
+  AuthenticatedKrangKrangItemsRoute: typeof AuthenticatedKrangKrangItemsRoute
+  AuthenticatedKrangKrangLocationsRoute: typeof AuthenticatedKrangKrangLocationsRoute
+  AuthenticatedKrangKrangRegionsRoute: typeof AuthenticatedKrangKrangRegionsRoute
+  AuthenticatedKrangKrangTownsRoute: typeof AuthenticatedKrangKrangTownsRoute
+  AuthenticatedKrangKrangIndexLazyRoute: typeof AuthenticatedKrangKrangIndexLazyRoute
+}
+
+const AuthenticatedKrangRouteChildren: AuthenticatedKrangRouteChildren = {
+  AuthenticatedKrangKrangItemsRoute: AuthenticatedKrangKrangItemsRoute,
+  AuthenticatedKrangKrangLocationsRoute: AuthenticatedKrangKrangLocationsRoute,
+  AuthenticatedKrangKrangRegionsRoute: AuthenticatedKrangKrangRegionsRoute,
+  AuthenticatedKrangKrangTownsRoute: AuthenticatedKrangKrangTownsRoute,
+  AuthenticatedKrangKrangIndexLazyRoute: AuthenticatedKrangKrangIndexLazyRoute,
+}
+
+const AuthenticatedKrangRouteWithChildren =
+  AuthenticatedKrangRoute._addFileChildren(AuthenticatedKrangRouteChildren)
+
+interface AuthenticatedRenenutetRouteChildren {
+  AuthenticatedRenenutetRenenutetIndexLazyRoute: typeof AuthenticatedRenenutetRenenutetIndexLazyRoute
+}
+
+const AuthenticatedRenenutetRouteChildren: AuthenticatedRenenutetRouteChildren =
+  {
+    AuthenticatedRenenutetRenenutetIndexLazyRoute:
+      AuthenticatedRenenutetRenenutetIndexLazyRoute,
+  }
+
+const AuthenticatedRenenutetRouteWithChildren =
+  AuthenticatedRenenutetRoute._addFileChildren(
+    AuthenticatedRenenutetRouteChildren,
+  )
+
+interface AuthenticatedWanshitongRouteChildren {
+  AuthenticatedWanshitongWanshitongIndexLazyRoute: typeof AuthenticatedWanshitongWanshitongIndexLazyRoute
+  AuthenticatedWanshitongWanshitongRolesIndexRoute: typeof AuthenticatedWanshitongWanshitongRolesIndexRoute
+  AuthenticatedWanshitongWanshitongUsersIndexRoute: typeof AuthenticatedWanshitongWanshitongUsersIndexRoute
+  AuthenticatedWanshitongWanshitongUsersOverridesIndexRoute: typeof AuthenticatedWanshitongWanshitongUsersOverridesIndexRoute
+}
+
+const AuthenticatedWanshitongRouteChildren: AuthenticatedWanshitongRouteChildren =
+  {
+    AuthenticatedWanshitongWanshitongIndexLazyRoute:
+      AuthenticatedWanshitongWanshitongIndexLazyRoute,
+    AuthenticatedWanshitongWanshitongRolesIndexRoute:
+      AuthenticatedWanshitongWanshitongRolesIndexRoute,
+    AuthenticatedWanshitongWanshitongUsersIndexRoute:
+      AuthenticatedWanshitongWanshitongUsersIndexRoute,
+    AuthenticatedWanshitongWanshitongUsersOverridesIndexRoute:
+      AuthenticatedWanshitongWanshitongUsersOverridesIndexRoute,
+  }
+
+const AuthenticatedWanshitongRouteWithChildren =
+  AuthenticatedWanshitongRoute._addFileChildren(
+    AuthenticatedWanshitongRouteChildren,
+  )
+
+interface AuthenticatedRouteChildren {
+  AuthenticatedKrangRoute: typeof AuthenticatedKrangRouteWithChildren
+  AuthenticatedRenenutetRoute: typeof AuthenticatedRenenutetRouteWithChildren
+  AuthenticatedWanshitongRoute: typeof AuthenticatedWanshitongRouteWithChildren
+  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedKrangRoute: AuthenticatedKrangRouteWithChildren,
+  AuthenticatedRenenutetRoute: AuthenticatedRenenutetRouteWithChildren,
+  AuthenticatedWanshitongRoute: AuthenticatedWanshitongRouteWithChildren,
+  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
   ForbiddenRoute: ForbiddenRoute,
-  ItemsRoute: ItemsRoute,
-  LocationsRoute: LocationsRoute,
-  RegionsRoute: RegionsRoute,
-  TownsRoute: TownsRoute,
   UnauthenticatedRoute: UnauthenticatedRoute,
 }
 export const routeTree = rootRouteImport

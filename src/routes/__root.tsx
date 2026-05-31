@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/Header';
 import { ThemeProvider } from '@/components/theme-provider';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 
@@ -12,7 +13,10 @@ export const Route = createRootRoute({
           <Outlet />
         </main>
         {import.meta.env.DEV && (
-          <TanStackRouterDevtools position="bottom-right" />
+          <>
+            <TanStackRouterDevtools position="bottom-left" />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </>
         )}
       </div>
     </ThemeProvider>
