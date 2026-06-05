@@ -20,6 +20,12 @@ importers:
       '@57eme-regiment/krang-api-contract':
         specifier: ^0.3.5
         version: 0.3.5(@types/node@24.12.4)(zod@4.4.3)
+      '@57eme-regiment/nabu-frontend-utils':
+        specifier: link:../Foxwatcher/nabu/packages/frontend-utils
+        version: link:nabu/packages/frontend-utils
+      '@57eme-regiment/nabu-ui':
+        specifier: link:../Foxwatcher/nabu/packages/ui
+        version: link:nabu/packages/ui
       '@base-ui/react':
         specifier: ^1.5.0
         version: 1.5.0(@types/react@19.2.15)(date-fns@4.4.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
