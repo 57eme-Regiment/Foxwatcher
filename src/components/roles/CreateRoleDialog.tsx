@@ -5,10 +5,10 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
-import { Button } from '@/components/ui/button';
-import { Field, FieldError, FieldLabel } from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
+} from '@57eme-regiment/nabu-ui';
+import { Button } from '@57eme-regiment/nabu-ui';
+import { Field, FieldError, FieldLabel } from '@57eme-regiment/nabu-ui';
+import { Input } from '@57eme-regiment/nabu-ui';
 import { HttpError } from '@/lib/http-error';
 import { WanApi } from '@/lib/api-client';
 import { zodResolver } from '@hookform/resolvers/zod';

@@ -1,6 +1,6 @@
 import { RegionFormModal } from '@/components/region/RegionFormModal';
 import { RegionGrid } from '@/components/region/RegionGrid';
-import { Button } from '@/components/ui/button';
+import { Button } from '@57eme-regiment/nabu-ui';
 import { useRegions } from '@/hooks/useRegions';
 import type { Region } from '@57em-regiment/krang-api-contract';
 import { IconPlus } from '@tabler/icons-react';

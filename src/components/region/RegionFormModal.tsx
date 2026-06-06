@@ -6,10 +6,10 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
-import { Button } from '@/components/ui/button';
-import { Field, FieldError, FieldLabel } from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
+} from '@57eme-regiment/nabu-ui';
+import { Button } from '@57eme-regiment/nabu-ui';
+import { Field, FieldError, FieldLabel } from '@57eme-regiment/nabu-ui';
+import { Input } from '@57eme-regiment/nabu-ui';
 import { useCreateRegion, useUpdateRegion } from '@/hooks/useRegions';
 import { useState } from 'react';
 import { z } from 'zod';

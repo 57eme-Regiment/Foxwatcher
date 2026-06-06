@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@57eme-regiment/auth-browser": "^1.8.0",
-    "@57eme-regiment/auth-contracts": "^1.9.0",
-    "@57eme-regiment/krang-api-contract": "^0.3.5",
+    "@57eme-regiment/auth-contracts": "link:../wan-shi-tong/packages/auth-contracts",
+    "@57eme-regiment/krang-api-contract": "link:../Krang/API/packages/contract",
     "@57eme-regiment/nabu-frontend-utils": "link:../Foxwatcher/nabu/packages/frontend-utils",
     "@57eme-regiment/nabu-ui": "link:../Foxwatcher/nabu/packages/ui",
     "@base-ui/react": "^1.5.0",

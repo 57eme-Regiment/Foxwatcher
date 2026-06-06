@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@57eme-regiment/nabu-ui';
 import { HttpError } from '@/lib/http-error';
 import { WanApi } from '@/lib/api-client';
 import type { UpdateRole } from '@57eme-regiment/auth-contracts';

@@ -15,11 +15,11 @@ importers:
         specifier: ^1.8.0
         version: 1.8.0(@types/node@24.12.4)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@57eme-regiment/auth-contracts':
-        specifier: ^1.9.0
-        version: 1.9.0(@types/node@24.12.4)
+        specifier: link:../wan-shi-tong/packages/auth-contracts
+        version: link:../wan-shi-tong/packages/auth-contracts
       '@57eme-regiment/krang-api-contract':
-        specifier: ^0.3.5
-        version: 0.3.5(@types/node@24.12.4)(zod@4.4.3)
+        specifier: link:../Krang/API/packages/contract
+        version: link:../Krang/API/packages/contract
       '@57eme-regiment/nabu-frontend-utils':
         specifier: link:../Foxwatcher/nabu/packages/frontend-utils
         version: link:nabu/packages/frontend-utils
@@ -187,11 +187,6 @@ packages:
 
   '@57eme-regiment/auth-contracts@1.9.0':
     resolution: {integrity: sha512-eFgkH4e+/08JIh6b/EIKHU8lz7fwS+/LBtSfCA1x7UcoFGZYmVSQcBN1KN3z7IuJDSi5gu5ekXgLlFerzNUN+g==, tarball: https://npm.pkg.github.com/download/@57eme-regiment/auth-contracts/1.9.0/9c1eaba1637caba33c45831b532c8ef39dcd2ae6}
-
-  '@57eme-regiment/krang-api-contract@0.3.5':
-    resolution: {integrity: sha512-UypPhr46+WHkgn22HPYVeGX6X2D5DuWLUJdyUM/p1eMaVd5QjmWWboC4TRbj5vHKz3APMybitlXzhClchHz1sA==, tarball: https://npm.pkg.github.com/download/@57eme-Regiment/krang-api-contract/0.3.5/99a4c819bc8439df1d220f73b28b91e4f7c7d834}
-    peerDependencies:
-      zod: '>=3'
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -3001,13 +2996,6 @@ snapshots:
       - vue
 
   '@57eme-regiment/auth-contracts@1.9.0(@types/node@24.12.4)':
-    dependencies:
-      '@ts-rest/core': 3.53.0-rc.1(@types/node@24.12.4)
-      zod: 4.4.3
-    transitivePeerDependencies:
-      - '@types/node'
-
-  '@57eme-regiment/krang-api-contract@0.3.5(@types/node@24.12.4)(zod@4.4.3)':
     dependencies:
       '@ts-rest/core': 3.53.0-rc.1(@types/node@24.12.4)
       zod: 4.4.3

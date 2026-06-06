@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@57eme-regiment/nabu-ui';
 import {
   IconBrandDiscord,
   IconLoader2,

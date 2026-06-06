@@ -1,6 +1,6 @@
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@57eme-regiment/nabu-ui';
+import { Button } from '@57eme-regiment/nabu-ui';
+import { Card, CardContent, CardHeader, CardTitle } from '@57eme-regiment/nabu-ui';
 import { useItems } from '@/hooks/useItems';
 import { useLocations } from '@/hooks/useLocations';
 import { useRegions } from '@/hooks/useRegions';

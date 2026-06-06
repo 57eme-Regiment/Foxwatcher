@@ -6,8 +6,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
-import { Button } from '@/components/ui/button';
+} from '@57eme-regiment/nabu-ui';
+import { Button } from '@57eme-regiment/nabu-ui';
 import { HttpError } from '@/lib/http-error';
 import { WanApi } from '@/lib/api-client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';

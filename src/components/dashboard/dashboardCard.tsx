@@ -3,7 +3,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from '@57eme-regiment/nabu-ui';
 import type { NavigationLink } from '@/features/navigation/navigation.model';
 import { cn } from '@/lib/utils';
 import { useHasPermission } from '@57eme-regiment/auth-browser';

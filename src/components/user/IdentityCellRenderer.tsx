@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@57eme-regiment/nabu-ui';
 import { formatDateTime } from '@/lib/format';
 import { IconLoader2, IconMinus, IconPlus, IconX } from '@tabler/icons-react';
 import type { ICellRendererParams } from 'ag-grid-community';
